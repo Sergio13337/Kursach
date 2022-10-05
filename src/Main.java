@@ -2,12 +2,20 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Main {
-
+    static Employee[] compound = new Employee[5];
 
     public static void main(String[] args) {
 
+        massiv();
+        expenses();
+        maxsalary();
+        minsalary();
+        mean();
+        employees();
 
-        Employee[] compound = new Employee[5];
+    }
+
+    private static void massiv() {
         compound[0] = new Employee("Муравей Павел Сергеевич ", 1, 20000);
         compound[1] = new Employee("Богомолов Иван Петрович", 2, 30000);
         compound[2] = new Employee("Леопардова Людмила Алексеевна", 3, 40000);
@@ -17,42 +25,54 @@ public class Main {
         for (Employee a : compound) {
             System.out.println(a);
         }
+    }
+
+    private static void expenses() {
         int summm = 0;
         for (int i = 0; i < compound.length; i++) {
-            summm = summm + compound[i].getSalary();
+            summm = summm + compound[i].getsalary();
         }
         System.out.println("Сумма затрат на зарплаты составляет: " + summm);
-
-
-        int min = 0;
-        int Max = 0;
-        for (int i = 0; i < compound.length; i++) {
-            if (Max < compound[i].getSalary() && compound[i].getSalary() >= 60000) {
-                Max = compound[i].getSalary();
-                System.out.println("Максимальная зарплату у: " + compound[4].getFIO() + " " + Max + " рублей");
-            }
-
-
-            if (min > compound[i].getSalary() || compound[i].getSalary() <= 20000) {
-                min = compound[i].getSalary();
-                System.out.println("Минимальная зарплату у: " + compound[0].getFIO() + " " + min + " рублей");
-            }
-
-        }
-
-        mean(summm);
-
-
-        for (int i = 0; i < compound.length; i++) {
-            System.out.println(compound[i].getFIO());
-        }
-
     }
 
-    private static void mean(int summm) {
-        int Srsumm = summm / 5;
-        System.out.println("Средняя ЗП составляет: " + Srsumm);
+    private static void maxsalary() {
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+        for (int i = 0; i < compound.length; i++) {
+            if (sum < compound[i].getsalary()) {
+                max = compound[i].getsalary();
+            }
+        }
+        System.out.println("Максимальная зарплату у: " + compound[4].getfIO() + " " + max + " рублей");
     }
 
+    private static void minsalary() {
+        int min = Integer.MAX_VALUE;
+        int summ = 0;
+        for (int i = 0; i < compound.length; i++) {
+            if (min > compound[i].getsalary()) {
+                summ += compound[i].getsalary();
+                min = summ;
+            }
+        }
+        System.out.println("Минимальная зарплату у: " + compound[0].getfIO() + " " + min + " рублей");
+    }
+
+
+    private static void mean() {
+        float summm = 0;
+        for (int i = 0; i < compound.length; i++) {
+            summm = summm + compound[i].getsalary();
+        }
+        float srSumm = summm / compound.length;
+        System.out.println("Средняя ЗП составляет: " + srSumm);
+    }
+
+    private static void employees() {
+        for (int i = 0; i < compound.length; i++) {
+            System.out.println(compound[i].getfIO());
+        }
+    }
 
 }
+
