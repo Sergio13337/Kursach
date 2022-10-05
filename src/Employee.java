@@ -1,28 +1,28 @@
 
 
 public class Employee {
-    public String FIO;
+    private String fIO;
     private int departament;
-    public int salary;
+    private int salary;
     private static int number = 1;
     private int id;
 
 
 
-    public Employee(String FIO, int departament, int salary) {
-        this.FIO = FIO;
+    public Employee(String fIO, int departament, int salary) {
+        this.fIO = fIO;
         this.departament = departament;
         this.salary = salary;
         this.id = number++;
     }
 
-    public String getFIO() {
-        return this.FIO;
+    public String getfIO() {
+        return this.fIO;
     }
     public int getDepartament(){
         return this.departament;
     }
-    public int getSalary(){
+    public int getsalary(){
         return this.salary;
     }
 
@@ -35,7 +35,7 @@ public class Employee {
     }
     @Override
     public String toString(){
-        return ("Порядковый номер " + id + " ФИО " + FIO + " Зарплата " + salary + " Департамент " + departament);
+        return ("Порядковый номер " + id + " ФИО " + fIO + " Зарплата " + salary + " Департамент " + departament);
     }
 
 
